@@ -8,7 +8,7 @@ class Fibonacci
 
         System.out.println(a);
 
-        if(count >= 1)
+        if(count >= 2)
         {
             System.out.println(b);
 
