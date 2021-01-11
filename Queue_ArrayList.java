@@ -2,70 +2,48 @@ import java.util.*;
 
 class Queue_ArrayList 
 {
-    static int f = 0, r = -1;
-
-    static int MAX = 5;
-
     ArrayList<String> q;
-
-    boolean isEmpty() 
-    {
-        return (f > r);
-    }
-
-    boolean isFull()
-    {
-        return (r == MAX - 1);
-    }
 
     void enqueue() 
     {
-        if(isFull()) 
-        {
-            System.out.println("Overflow!");
-            return;
-        }
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the string to be inserted:");
         String str = sc.nextLine();
-
-        r++;
         
         q.add(str);
     }
 
     void dequeue() 
     {
-        if(isEmpty()) 
+        if(q.size() == 0) 
         {
             System.out.println("Underflow");
             return;
         }
         
-        System.out.println("Element deleted is: " + q.get(f));
-        f++;
-
-        if(f > r) 
-        {
-            f = 0;
-            r = -1;
-        }
+        System.out.println("Element deleted is: " + q.get(0));
+        
+        q.remove(0);
     }
 
     void display() 
     {
-        if(isEmpty()) 
+        if(q.size() == 0) 
         {
-            System.out.println("The queue is empty: ");
+            System.out.println("The queue is empty");
             return;
         }
 
-        System.out.println("The queue is: ");
+        System.out.println("The queue :-");
         
-        for(int i = f; i <= r; i++) 
-        System.out.println(q.get(i) + " ");
+        Iterator<String> itr = q.iterator();
+
+        while(itr.hasNext())
+        {
+            String str = itr.next();
+            System.out.println(str);
+        }
     }
     public static void main(String[] args) 
     {
@@ -74,9 +52,9 @@ class Queue_ArrayList
 
         Queue_ArrayList queue = new Queue_ArrayList();
 
-        queue.q = new ArrayList<String>(MAX);
+        queue.q = new ArrayList<String>();
 
-        while (true) 
+        while(true) 
         {
             System.out.println("Enter:\n1 to insert\t2 to delete\t3 to Display\t4 to Exit");
 

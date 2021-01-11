@@ -1,4 +1,4 @@
-package ResultPackage;
+package StudentPackage;
 
 public class CreditLimit extends Exception
 {
